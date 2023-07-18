@@ -8,7 +8,7 @@ const ArticleCard = ({title, author, created_at, article_img_url, comment_count}
   return (
     <div className='content-card'>
         <div className='title'> <p>{title}</p></div>
-        <img src={article_img_url} alt="article's image" className='article-img' />
+        <img src={article_img_url} alt="visual Illustration" className='article-img' />
        
         <div className='content'>
         <p className='author'>by: {author}</p>

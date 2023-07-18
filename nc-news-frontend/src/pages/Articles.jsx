@@ -7,11 +7,10 @@ import ArticleCard from "../components/ArticleCard";
 
 const Articles = () => {
     const [articles, setArticles] = useState([])
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchArticles = () => {
-          setLoading(true);
           getAllArticles().then((articles) => {
             setArticles(articles);
          
