@@ -34,6 +34,11 @@ body{
   width: 50px;
   height: 10px;
  cursor: pointer;
+ 
+}
+
+.readmore{
+  text-decoration: none;
 }
 
 .logo{
@@ -100,6 +105,37 @@ width: 100%;
   height: 11px;
   width: 15px;
 }
+.card{
+  color:#250c0c;
+  background-color: #F2EE9D;
+}
+.article-img-card{
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  max-width: 100%;
+}
+
+.article-content{
+  display: flex;
+  gap: 15px;
+  width: 50%;
+  width: 100%;
+}
+
+.article-body{
+  font-size: 20px;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+.author-article{
+  padding-left: 240px;
+}
+
+.title-card{
+  text-align: center;
+  padding: 30px;
+}
 
 @media (max-width: 600px){
 
@@ -129,6 +165,10 @@ width: 100%;
     height: 10px;
   }
 
+  .article-content{
+    gap: 0px;
+  }
+
   .content-card {
     flex-basis: 100%; 
     margin-bottom: 20px;
@@ -136,6 +176,26 @@ width: 100%;
     border-radius: 10px;
     background-color: #F2EE9D;
   }
+
+  .title-card{
+    font-size: small;
+  }
+
+  .author-article{
+    padding-left: 10px;
+  
+    width: 30%;
+    gap: 30px;
+  }
+  .article-body {
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.date{
+  margin-right: 20px;
+}
 }
 
 

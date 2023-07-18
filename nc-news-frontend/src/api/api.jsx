@@ -8,3 +8,9 @@ export const getAllArticles = async () => {
     const resp = await api.get('/articles');
     return resp.data.articles
 }
+
+export const getOneArticle = async (article_id) => {
+    const resp = await api.get(`/articles/${article_id}`);
+    
+    return resp.data.article;
+}

@@ -1,8 +1,8 @@
 
 import { Routes, Route } from 'react-router-dom';
 import './App.css'
-import Header from './components/Header';
 import Nav from './components/Nav';
+import Article from './pages/Article';
 import Articles from './pages/Articles';
 
 
@@ -12,9 +12,9 @@ function App() {
   return (
     <>
      <Nav />
-     <Header/>
       <Routes>
       <Route path="/" element={<Articles />} />
+      <Route path="/articles/:article_id" element={<Article />} />
       </Routes>
      
     </>
