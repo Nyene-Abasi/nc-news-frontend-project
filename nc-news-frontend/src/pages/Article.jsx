@@ -14,24 +14,14 @@ const Article = () => {
     const [comments, setComments] = useState([])
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-      const fetchItem = () => {
-        getOneArticle(article_id).then((article) => {
-          setArticle(article);
-          setLoading(false);
-        });
-      };
-      fetchItem();
-    }, [article_id]);
-
-    useEffect(() => {
-        const fetchItem = () => {
-          getComment(article_id).then((comments) => {
-            setComments(comments);
-           
-            setLoading(false);
-          });
-        };
-        fetchItem();
+        const fetchArticleAndComments = () => {
+          Promise.all([getOneArticle(article_id), getComment(article_id)])
+            .then(([articleData, commentsData]) => {
+              setArticle(articleData);
+              setComments(commentsData);
+              setLoading(false);
+            })}
+            fetchArticleAndComments();
       }, [article_id]);
 
     
