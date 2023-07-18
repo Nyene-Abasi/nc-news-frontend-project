@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const ArticlesCard = ({title, author, created_at, article_img_url, comment_count, article_id}) => {
   return (
+    
     <div className='content-card'>
         <div className='title'> <p>{title}</p></div>
         <img src={article_img_url} alt="visual Illustration" className='article-img' />
@@ -19,6 +20,7 @@ const ArticlesCard = ({title, author, created_at, article_img_url, comment_count
         <p className='article-button'>Read More</p>
         </Link>
         </div>
+        
     </div>
   )
 }
