@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getOneArticle } from '../api/api';
+import { getComment, getOneArticle } from '../api/api';
 import ArticleCard from '../components/ArticleCard';
+import CommentCard from '../components/CommentCard';
 
 const Article = () => {
 
@@ -10,6 +11,7 @@ const Article = () => {
    
 
     const [article, setArticle] = useState({});
+    const [comments, setComments] = useState([])
     const [loading, setLoading] = useState(true);
     useEffect(() => {
       const fetchItem = () => {
@@ -20,6 +22,17 @@ const Article = () => {
       };
       fetchItem();
     }, [article_id]);
+
+    useEffect(() => {
+        const fetchItem = () => {
+          getComment(article_id).then((comments) => {
+            setComments(comments);
+           
+            setLoading(false);
+          });
+        };
+        fetchItem();
+      }, [article_id]);
 
     
   
@@ -38,6 +51,21 @@ const Article = () => {
               votes={article.votes}
               
             />
+               
+               
+            <div className='comment-parent'>
+            
+            <h2>Comments</h2>
+                {comments.map((comment)=>(
+                  <CommentCard
+                    key={comment.comment_id}
+                    author={comment.author}
+                    body={comment.body}
+                    created_at={comment.created_at}
+                    
+                 />
+                ))}  
+            </div>
           </>
         )}
       </div>

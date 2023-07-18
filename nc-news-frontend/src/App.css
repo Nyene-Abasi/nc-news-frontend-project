@@ -47,6 +47,16 @@ body{
   
 }
 
+.break {
+  
+  border: none; 
+  border-top: 1px solid  #250c0c;; 
+  margin: 10px 0; 
+  background-color:#F2EE9D;
+  width: 60%;
+
+}
+
 #news-header{
   padding-left: 20px;
 }
@@ -78,6 +88,32 @@ flex-wrap: wrap;
 height: 400px;
 width: 100%;
 
+}
+
+.comment-parent{
+  color:#250c0c;
+  background-color: #F2EE9D;
+}
+
+.comment-body{
+  font-size: 18px;
+  width: 60%;
+}
+
+.author-comment{
+  font-size: 25px;
+  font-weight: bold;
+  
+}
+
+.date-comment{
+  font-weight: bold;
+}
+
+
+.comment-card{
+  padding-left: 60px;
+  /* padding-right: 500px; */
 }
 
 .title{
@@ -179,6 +215,10 @@ width: 100%;
 
   .title-card{
     font-size: small;
+  }
+
+  .comment-body{
+    width: 100%;
   }
 
   .author-article{
