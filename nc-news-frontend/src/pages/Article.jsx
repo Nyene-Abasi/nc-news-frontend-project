@@ -25,14 +25,15 @@ const Article = () => {
       }, [article_id]);
 
     
-  
     return (
       <div>
         {loading ? (
           <p>Loading...</p>
         ) : (
           <>
+          <div className='article-home'>
             <ArticleCard
+            article_id={article.article_id}
               title={article.title}
               author={article.author}
               created_at={article.created_at}
@@ -40,12 +41,10 @@ const Article = () => {
               body={article.body}
               votes={article.votes}
               
-            />
-               
-               
+            />     
             <div className='comment-parent'>
             
-            <h2>Comments</h2>
+            <h2 className='commment header'>Comments</h2>
                 {comments.map((comment)=>(
                   <CommentCard
                     key={comment.comment_id}
@@ -55,6 +54,7 @@ const Article = () => {
                     
                  />
                 ))}  
+            </div>
             </div>
           </>
         )}
