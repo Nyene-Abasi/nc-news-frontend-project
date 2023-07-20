@@ -5,10 +5,14 @@ import { useState } from 'react'
 import { patchVote } from '../api/api'
 
 
-const ArticleCard = ({title, author, created_at, article_img_url, article_id, body, votes}) => {
 
+const ArticleCard = ({title, author, created_at, article_img_url, article_id, body, votes}) => {
+  
     const [newVotes, setNewVotes] = useState(0)
     const [error, setError] = useState(false)
+
+   
+
     const handleClick = () =>{
         setNewVotes ((currNewVotes) =>{
             return currNewVotes + 1
@@ -38,7 +42,7 @@ const ArticleCard = ({title, author, created_at, article_img_url, article_id, bo
         <button className='vote' onClick={handleClick} disabled={newVotes > 0}>
          <img src={likeIcon} alt="like-icon" className='like' />
          </button>
-         {error ? <p>Opp! Something went wrong. Try again!</p> : null}
+         {error ? <p>Opps! Something went wrong. Try again!</p> : null}
          </p>
         </div>
        

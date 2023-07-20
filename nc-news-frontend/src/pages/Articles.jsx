@@ -8,6 +8,7 @@ import ArticlesCard from "../components/ArticlesCard";
 const Articles = () => {
     const [articles, setArticles] = useState([])
     const [loading, setLoading] = useState(true);
+   
 
     useEffect(() => {
         const fetchArticles = () => {
