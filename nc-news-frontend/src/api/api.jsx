@@ -4,8 +4,8 @@ const api = axios.create({
     baseURL: 'https://nc-news-db.onrender.com/api',
 });
 
-export const getAllArticles = async () => {
-    const resp = await api.get('/articles');
+export const getAllArticles = async (topic) => {
+    const resp = await api.get('/articles', {params: { topic }});
     return resp.data.articles
 }
 
