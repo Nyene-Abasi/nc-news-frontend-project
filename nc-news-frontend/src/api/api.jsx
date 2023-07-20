@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 export const getAllArticles = async () => {
-    const resp = await api.get('/articles');
+    const resp = await api.get('/articles'); 
     return resp.data.articles
 }
 
@@ -27,3 +27,9 @@ export const patchVote = async (article_id) => {
     const resp = await api.patch(`/articles/${article_id}`, body);
     return resp.data.article;
 }
+
+export const postComment = async (requestedBody, article_id) => {
+    
+    const resp = await api.post(`/articles/${article_id}/comments`, requestedBody);
+    return resp.data.comment;
+};

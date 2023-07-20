@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getComment, getOneArticle } from '../api/api';
+import { getComment, getOneArticle, postComment } from '../api/api';
 import ArticleCard from '../components/ArticleCard';
 import CommentCard from '../components/CommentCard';
 
@@ -12,6 +12,8 @@ const Article = () => {
 
     const [article, setArticle] = useState({});
     const [comments, setComments] = useState([])
+    const [username, setUsername] = useState('')
+    const [body, setBody] = useState('')
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         const fetchArticleAndComments = () => {
@@ -24,13 +26,40 @@ const Article = () => {
             fetchArticleAndComments();
       }, [article_id]);
 
+      const handleSubmit = (e) => {
+        e.preventDefault();
     
+        const requestedBody = {
+          username,
+          body,
+        };
+        setLoading(true)
+        postComment(requestedBody, article_id)
+          .then((data) => {
+          
+           setComments((currComments)=>{
+            return [data, ...currComments]
+           })
+           setUsername('')
+           setBody('')
+           
+        setLoading(false);
+      }).catch((error) => {
+        setLoading(false); 
+      
+      });
+       
+      };
+    
+
+ 
     return (
       <div>
         {loading ? (
           <p>Loading...</p>
         ) : (
           <>
+          
           <div className='article-home'>
             <ArticleCard
             article_id={article.article_id}
@@ -40,13 +69,15 @@ const Article = () => {
               article_img_url={article.article_img_url}
               body={article.body}
               votes={article.votes}
+
+              
               
             />     
             <div className='comment-parent'>
-            
-            <h2 className='commment header'>Comments</h2>
+            <h2 className='commment-header'>Comments</h2>
+
                 {comments.map((comment)=>(
-                  <CommentCard
+                  <CommentCard 
                     key={comment.comment_id}
                     author={comment.author}
                     body={comment.body}
@@ -54,6 +85,16 @@ const Article = () => {
                     
                  />
                 ))}  
+                <h2>Add Comments</h2>
+
+                <form className='form' onSubmit={handleSubmit}>
+                    <label htmlFor="username"></label>
+                    <input type="text" id='username' placeholder='Enter username' value={username} onChange={(e)=>setUsername(e.target.value)}/>
+                    <label htmlFor="comments"></label>
+                    <textarea  id="comments" cols="30" className='textarea' rows="10" placeholder="What's your thought?" value={body} onChange={(e)=>setBody(e.target.value)}></textarea>
+                    <button type='submit' disabled={loading} className='submit-comment'>Submit</button>
+                </form>
+                
             </div>
             </div>
           </>
