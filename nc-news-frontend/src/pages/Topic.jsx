@@ -9,6 +9,9 @@ import ArticlesCard from "../components/ArticlesCard";
 const Topic = () => {
     const [articles, setArticles] = useState([])
     const [loading, setLoading] = useState(true);
+    const [sort_by, setSort_by] = useState('votes')
+    const [order, setOrder] = useState('ASC')
+   
     
 
     const { topic } = useParams()
@@ -16,14 +19,14 @@ const Topic = () => {
 
     useEffect(() => {
         const fetchArticles = () => {
-          getAllArticles(topic).then((articles) => {
+          getAllArticles(topic, sort_by, order).then((articles) => {
             setArticles(articles);
          
             setLoading(false);
           });
         };
         fetchArticles();
-      }, [topic]);
+      }, [topic, sort_by, order]);
 
       return (
         <>
@@ -35,7 +38,30 @@ const Topic = () => {
               <>
               <h2 className='lists'>List of {topic} articles</h2>
               
+              <form className='select'>
+               <select
+                  value={order}
+                  onChange={(e)=>setOrder(e.target.value)}
+                  className='select-option'
+                  >
+                    
+                    <option value="ASC">Ascending</option>
+                    <option value="DESC">Descending</option>
+                  </select>
+
+                  
+                  <select  value={sort_by}
+                  onChange={(e)=>setSort_by(e.target.value)} className='select-option'>
+                    
+                    <option value="votes">Votes</option>
+                    <option value="comment_count">Comment count</option>
+                    <option value="created_at">Date</option>
+
+                  </select>
+                  </form>
+              
                <div className='articles-list'>
+               
                 
                 {articles.map((article)=>(
                   <ArticlesCard 
