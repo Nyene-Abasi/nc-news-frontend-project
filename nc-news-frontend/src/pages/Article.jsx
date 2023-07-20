@@ -16,6 +16,7 @@ const Article = () => {
     const [body, setBody] = useState('')
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false)
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     useEffect(() => {
         const fetchArticleAndComments = () => {
           Promise.all([getOneArticle(article_id), getComment(article_id)])
@@ -34,7 +35,7 @@ const Article = () => {
           alert("Please fill in all the fields before submitting!!!!!");
           return;
       }
-
+      setIsButtonDisabled(true);
         const requestedBody = {
           username,
           body,
@@ -48,11 +49,13 @@ const Article = () => {
            })
            setUsername('')
            setBody('') 
+           setIsButtonDisabled(false);
         setLoading(false);
 
       }).catch(() => {
         setLoading(false); 
         setError(true)
+        setIsButtonDisabled(false);
       
       });
        
@@ -88,7 +91,7 @@ const Article = () => {
                     <input type="text" id='username' placeholder='Enter username' value={username} onChange={(e)=>setUsername(e.target.value)}/>
                     <label htmlFor="comments"></label>
                     <textarea  id="comments" cols="30" className='textarea' rows="10" placeholder="What's your thought?" value={body} onChange={(e)=>setBody(e.target.value)} ></textarea>
-                    <button type='submit' disabled={loading } className='submit-comment'>Submit</button>
+                    <button type='submit' className='submit-comment' disabled={isButtonDisabled} >Submit</button>
                     {error ? <p>Failed to post comment. Please try again!</p> : null}
                 </form>  
 
