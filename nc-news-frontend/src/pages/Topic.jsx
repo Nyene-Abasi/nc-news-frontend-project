@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { getAllArticles } from '../api/api';
+import { useParams } from "react-router-dom";
 import Header from '../components/Header'
 import ArticlesCard from "../components/ArticlesCard";
 
@@ -9,16 +10,19 @@ const Topic = () => {
     const [articles, setArticles] = useState([])
     const [loading, setLoading] = useState(true);
 
+    const { topic } = useParams()
+    
+
     useEffect(() => {
         const fetchArticles = () => {
-          getAllArticles().then((articles) => {
+          getAllArticles(topic).then((articles) => {
             setArticles(articles);
          
             setLoading(false);
           });
         };
         fetchArticles();
-      }, []);
+      }, [topic]);
 
       return (
         <>

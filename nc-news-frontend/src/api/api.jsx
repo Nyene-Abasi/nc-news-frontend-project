@@ -27,3 +27,8 @@ export const patchVote = async (article_id) => {
     const resp = await api.patch(`/articles/${article_id}`, body);
     return resp.data.article;
 }
+
+export const getTopics = async () => {
+    const resp = await api.get('/topics');
+    return resp.data.topics
+}
