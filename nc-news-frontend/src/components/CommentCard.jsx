@@ -2,6 +2,7 @@ import React from 'react'
 import moment from 'moment'
 
 const CommentCard = ({ author, body, created_at }) => {
+ 
   return (
     <div className='comment-card'>
        

@@ -32,3 +32,8 @@ export const getTopics = async () => {
     const resp = await api.get('/topics');
     return resp.data.topics
 }
+export const postComment = async (requestedBody, article_id) => {
+    
+    const resp = await api.post(`/articles/${article_id}/comments`, requestedBody);
+    return resp.data.comment;
+};
