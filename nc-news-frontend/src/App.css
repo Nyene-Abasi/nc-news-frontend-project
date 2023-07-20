@@ -25,6 +25,11 @@ body{
   margin-bottom: 20px;
 }
 
+.lists{
+  color: #F2EE9D;
+  text-align: center;
+}
+
 .article-button{
   background-color: #601a1a ;
   color: #F2EE9D ;
