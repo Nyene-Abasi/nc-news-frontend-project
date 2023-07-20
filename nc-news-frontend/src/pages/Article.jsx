@@ -35,8 +35,6 @@ const Article = () => {
           return;
       }
 
-      setLoading(true)
-  
         const requestedBody = {
           username,
           body,
