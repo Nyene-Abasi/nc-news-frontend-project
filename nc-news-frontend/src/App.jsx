@@ -4,6 +4,7 @@ import './App.css'
 import Nav from './components/Nav';
 import Article from './pages/Article';
 import Articles from './pages/Articles';
+import Topic from './pages/Topic';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Articles />} />
       <Route path="/articles/:article_id" element={<Article />} />
+      <Route path="/articles/topic/:topic" element={<Topic/> }/>
       </Routes>
      
     </>
