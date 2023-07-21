@@ -17,6 +17,7 @@ const Article = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false)
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+    
     useEffect(() => {
         const fetchArticleAndComments = () => {
           Promise.all([getOneArticle(article_id), getComment(article_id)])
@@ -43,6 +44,7 @@ const Article = () => {
        
         postComment(requestedBody, article_id)
           .then((data) => {
+           
           alert("Comment posted successfully!");
            setComments((currComments)=>{
             return [data, ...currComments]
@@ -99,13 +101,16 @@ const Article = () => {
             <h2 className='commment-header'>Comments</h2>
 
                 {comments.map((comment)=>(
-                  <CommentCard 
+                  <CommentCard
                     key={comment.comment_id}
                     author={comment.author}
                     body={comment.body}
-                    created_at={comment.created_at}   
+                    created_at={comment.created_at}  
+                    comment_id={comment.comment_id} 
                  />
-                ))}    
+                ))}  
+                    
+
             </div>
             </div>
           </>

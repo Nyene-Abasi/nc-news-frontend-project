@@ -37,3 +37,5 @@ export const postComment = async (requestedBody, article_id) => {
     const resp = await api.post(`/articles/${article_id}/comments`, requestedBody);
     return resp.data.comment;
 };
+
+

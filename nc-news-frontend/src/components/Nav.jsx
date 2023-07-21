@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
+import { useContext } from 'react';
 import { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { getTopics } from '../api/api';
+import { UserContext } from '../App';
+
 
 const Nav = () => {
+const {user, setUser} = useContext(UserContext)
 
 const [topics, setTopics] = useState([])
 
@@ -27,7 +31,10 @@ useEffect(() => {
              return ( <Link to={`/articles/topic/${topic.slug}`} className='logo' key={index}>{` ${topic.slug[0].toUpperCase() + topic.slug.slice(1)}`}</Link>)
               })}
            
-            <Link to='/profile' className='logo'>Profile</Link>
+           {!user && ( 
+           <button onClick={()=>setUser('grumpy19')}>Sign In</button>
+           )}
+           <p>Welcome: {user}</p>
         </div>
 
     </nav>
