@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getComment, getOneArticle, postComment } from '../api/api';
 import ArticleCard from '../components/ArticleCard';
 import CommentCard from '../components/CommentCard';
+import Error from './Error';
 
 const Article = () => {
 
@@ -25,7 +26,11 @@ const Article = () => {
               setArticle(articleData);
               setComments(commentsData);
               setLoading(false);
-            })}
+            }).catch((error)=>{
+              setError(error)
+            })
+          
+          }
             fetchArticleAndComments();
       }, [article_id]);
 
@@ -63,6 +68,16 @@ const Article = () => {
        
       };
     
+      if(error){
+        return(
+          <div>
+         < Error
+          errorStatus={error.response.status} 
+          errorMessage={error.response.data.msg}
+         />
+          </div>
+        )
+      }
 
  
     return (

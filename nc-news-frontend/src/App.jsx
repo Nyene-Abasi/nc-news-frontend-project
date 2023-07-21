@@ -6,6 +6,7 @@ import './App.css'
 import Nav from './components/Nav';
 import Article from './pages/Article';
 import Articles from './pages/Articles';
+import Error from './pages/Error';
 import Topic from './pages/Topic';
 
 export const UserContext = createContext(null)
@@ -22,6 +23,7 @@ function App() {
  <Route path="/" element={<Articles />} />
  <Route path="/articles/:article_id" element={<Article />} />
  <Route path="/articles/topic/:topic" element={<Topic/> }/>
+ <Route path="*" element={< Error errorStatus={404} errorMessage={'Not Found'}/>}/>
  </Routes>
  </UserContext.Provider >
 
