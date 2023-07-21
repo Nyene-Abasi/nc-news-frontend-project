@@ -37,7 +37,7 @@ const Article = () => {
           return;
       }
       setIsButtonDisabled(true);
-        const requestedBody = {
+        const requestedBody = { 
           username,
           body,
         };
@@ -101,7 +101,7 @@ const Article = () => {
             <h2 className='commment-header'>Comments</h2>
 
                 {comments.map((comment)=>(
-                  <CommentCard
+                  <CommentCard setComments={setComments}
                     key={comment.comment_id}
                     author={comment.author}
                     body={comment.body}
