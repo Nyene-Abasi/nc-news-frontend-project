@@ -12,17 +12,19 @@ export const UserContext = createContext(null)
 
 function App() {
   
-
+  const [user, setUser] = useState('')
   return (
     <>
     
-     <Nav />
-      <Routes>
-      <Route path="/" element={<Articles />} />
-      <Route path="/articles/:article_id" element={<Article />} />
-      <Route path="/articles/topic/:topic" element={<Topic/> }/>
-      </Routes>
-     
+    <UserContext.Provider value={{user, setUser}}>
+<Nav />
+ <Routes>
+ <Route path="/" element={<Articles />} />
+ <Route path="/articles/:article_id" element={<Article />} />
+ <Route path="/articles/topic/:topic" element={<Topic/> }/>
+ </Routes>
+ </UserContext.Provider >
+
     </>
   )
 }
