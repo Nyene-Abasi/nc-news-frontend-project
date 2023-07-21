@@ -17,6 +17,7 @@ const CommentCard = ({ author, body, created_at, comment_id, setComments }) => {
     setIsButtonDisabled(true)
       deleteComment(comment_id)
       .then(() => {
+        alert('Comment deleted')
         setComments((current) => {
           return current.filter((comment) => {
             return comment.comment_id !== comment_id;
