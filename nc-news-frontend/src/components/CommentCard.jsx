@@ -9,7 +9,13 @@ const CommentCard = ({ author, body, created_at, comment_id }) => {
   const {user} = useContext(UserContext)
   
 
-  
+  const handleDelete = (comment_id) =>{
+      deleteComment(comment_id)
+      alert('comment deleted')
+      window.location.reload()
+    
+      
+  }
  
   return (
     <div className='comment-card'>
@@ -26,6 +32,4 @@ const CommentCard = ({ author, body, created_at, comment_id }) => {
 }
 
 export default CommentCard
-
-
 
