@@ -32,7 +32,7 @@ useEffect(() => {
               })}
            
            {!user && ( 
-           <button onClick={()=>setUser('grumpy19')}>Sign In</button>
+           <button onClick={()=>setUser('grumpy19')} className='submit-comment'>Sign In</button>
            )}
            <p>Welcome: {user}</p>
         </div>
