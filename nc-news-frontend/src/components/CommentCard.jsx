@@ -40,7 +40,7 @@ const CommentCard = ({ author, body, created_at, comment_id, setComments }) => {
         <p className='comment-body'>{body}</p>
         <p className='date-comment'>at {moment(created_at).format('MMMM Do YYYY')}</p>
         {author === user &&(
-        <button onClick={()=>handleDelete(comment_id)} disabled={isButtonDisabled}>Delete Comment</button>
+        <button onClick={()=>handleDelete(comment_id)} disabled={isButtonDisabled} className='submit-comment'>Delete</button>
         )}
          {error ? <p>Failed to delete comment. Please try again!</p> : null}
         <hr className='break'/>
