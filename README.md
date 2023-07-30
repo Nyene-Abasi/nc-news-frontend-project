@@ -10,7 +10,7 @@ API: https://nc-news-db.onrender.com
 
 To run locally:
 
--- git clone [link to this project]
+-- git clone https://github.com/Nyene-Abasi/nc-news-frontend-project.git
 
 -- npm install
 
