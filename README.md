@@ -11,7 +11,9 @@ API: https://nc-news-db.onrender.com
 To run locally:
 
 -- git clone [link to this project]
+
 -- npm install
+
 -- npm run dev
 
 Software requirements: Node.js v20.2.0
